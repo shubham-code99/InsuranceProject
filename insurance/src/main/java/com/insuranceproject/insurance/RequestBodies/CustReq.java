@@ -9,14 +9,16 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CustReq {
     
+    private @Getter @Setter int cid;
     private @Getter @Setter String cname;
     private @Getter @Setter String email;
     private @Getter @Setter String status;
-
+    
+    // private @Getter @Setter int pid;
     private @Getter @Setter String vname;
     private @Getter @Setter String Regnumber;
     // private @Getter @Setter String sdate;
     // private @Getter @Setter String edate;
 
-    private @Getter @Setter int billamount;
+    // private @Getter @Setter int billamount;
 }
