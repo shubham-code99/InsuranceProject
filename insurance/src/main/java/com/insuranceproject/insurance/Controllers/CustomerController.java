@@ -42,8 +42,10 @@ public class CustomerController {
             ArrayList<Policy> arr=new ArrayList<>();
             arr.add(p);
             cus.setPolicy(arr);
-            cus=crepo.save(cus);
             // p.setCustomer(cus);
+            p.setCustomer(cus);
+
+            cus=crepo.save(cus);
             p=prepo.save(p);
             return new ResponseEntity<Customer>(cus, HttpStatus.CREATED);
         }
@@ -58,6 +60,7 @@ public class CustomerController {
             Customer cs=new Customer();
             cs=cust.get();
             cs.getPolicy().add(p);
+            p.setCustomer(cs);
             cs=crepo.save(cs);
             // p=prepo.save(p);
             return new ResponseEntity<Customer>(cs, HttpStatus.CREATED);

@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-// import javax.persistence.JoinTable;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,9 +30,9 @@ public class Customer {
     private @Getter @Setter String email;
     private @Getter @Setter String status;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer") for bidirectional
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "cid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer") //for bidirectional
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(referencedColumnName = "cid")
     private @Getter @Setter List<Policy> policy=new ArrayList<Policy>();
 
     public Customer(String cname, String email, String status) {
