@@ -8,17 +8,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustReq {
-    
+    //customer
     private @Getter @Setter int cid;
     private @Getter @Setter String cname;
-    private @Getter @Setter String email;
-    private @Getter @Setter String status;
+    private @Getter @Setter String address;
     
-    // private @Getter @Setter int pid;
-    private @Getter @Setter String vname;
-    private @Getter @Setter String Regnumber;
-    // private @Getter @Setter String sdate;
-    // private @Getter @Setter String edate;
+    //policy
+    private @Getter @Setter int amount;
+    private @Getter @Setter String renew;
+    private @Getter @Setter String type;
+    private @Getter @Setter boolean status;
 
-    // private @Getter @Setter int billamount;
+
 }

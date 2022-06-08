@@ -23,21 +23,27 @@ public class Policy {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private @Getter @Setter int pid;
-    private @Getter @Setter String vname;
-    private @Getter @Setter String Regnumber;
     private @Getter @Setter String sdate;
     private @Getter @Setter String edate;
-
+    private @Getter @Setter int amount;
+    private @Getter @Setter String renew;
+    private @Getter @Setter String type;
+    private @Getter @Setter boolean status;
+    
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cid")
     private @Getter @Setter Customer customer;
-
-    public Policy(String vname, String regnumber, String sdate, String edate) {
-        this.vname = vname;
-        Regnumber = regnumber;
+    
+    public Policy(String sdate, String edate, int amount, String renew, String type, boolean status) {
         this.sdate = sdate;
         this.edate = edate;
+        this.amount = amount;
+        this.renew = renew;
+        this.type = type;
+        this.status = status;
     }
+    
 
     
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,11 @@ public class CustomerController {
     @Autowired CustomerRepository crepo;
     @Autowired PolicyRepository prepo;
     // @Autowired Claim clrepo;
+
+    @GetMapping("/")
+    public String hello(){
+        return "Hello World";
+    }
     
     @PostMapping("/addCustomer")
     public ResponseEntity<Customer> addCust(@RequestBody CustReq creq){
@@ -30,15 +36,15 @@ public class CustomerController {
             Policy p=new Policy();
             // Claim c=new Claim();
             Customer cus=new Customer();
-    
-            p.setRegnumber(creq.getRegnumber());
-            p.setVname(creq.getVname());
-    
-            // c.setBillamount(creq.getBillamount());
-    
+            
+            p.setAmount(creq.getAmount());
+            p.setRenew(creq.getRenew());
+            p.setType(creq.getType());
+            p.setStatus(true);
+
             cus.setCname(creq.getCname());
-            cus.setEmail(creq.getEmail());
-            cus.setStatus(creq.getStatus());
+            cus.setAddress(creq.getAddress());
+            
             ArrayList<Policy> arr=new ArrayList<>();
             arr.add(p);
             cus.setPolicy(arr);
@@ -52,8 +58,10 @@ public class CustomerController {
         else{
             Optional<Customer> cust=crepo.findById(creq.getCid());
             Policy p=new Policy();
-            p.setRegnumber(creq.getRegnumber());
-            p.setVname(creq.getVname());
+            p.setAmount(creq.getAmount());
+            p.setRenew(creq.getRenew());
+            p.setType(creq.getType());
+            p.setStatus(true);
             
             ArrayList<Policy> arr=new ArrayList<>();
             arr.add(p);
