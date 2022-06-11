@@ -1,44 +1,73 @@
 package com.insuranceproject.insurance.Entity;
 
-import java.util.Set;
-
-import javax.management.relation.Role;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+// import lombok.Data;
 
 @Entity
-@Data
-@NoArgsConstructor
+// @Data
 public class Users {
+
+    // @Autowired
+    // private BCryptPasswordEncoder passwordEncoder;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_ID")
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int userid;
     private String username;
-    private String password;
-    // bi-directional many-to-many association to Role
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
-    private Set<Role> roles;
- 
-    public Users(String username, String password) {
+    private String pasword;
+
+    public Users(int userid, String username, String pasword) {
+        this.userid = userid;
         this.username = username;
-        this.password = password;
+        this.pasword = pasword;
     }
-   
+
+    @ManyToOne
+    @JoinColumn(name = "fk_roles")
+    private Roles role;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getpasword() {
+        return pasword;
+    }
+
+    public void setpasword(String pasword) {
+        // this.pasword = passwordEncoder.encode(pasword) ;
+        this.pasword = (pasword) ;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
+
     
-
-   
-
-
+    
 }

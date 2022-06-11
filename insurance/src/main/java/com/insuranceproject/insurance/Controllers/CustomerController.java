@@ -29,6 +29,11 @@ public class CustomerController {
         return "Hello World";
     }
     
+    @GetMapping("/manager")
+    public String hellomanager(){
+        return "Hello Manager";
+    }
+    
     @PostMapping("/addCustomer")
     public ResponseEntity<Customer> addCust(@RequestBody CustReq creq){
         if(creq.getCid()==0){
