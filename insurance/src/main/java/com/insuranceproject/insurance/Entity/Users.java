@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 // import lombok.Data;
 
@@ -25,7 +25,12 @@ public class Users {
     private String username;
     private String pasword;
 
+    public Users(){
+        super();
+    }
+
     public Users(int userid, String username, String pasword) {
+        super();
         this.userid = userid;
         this.username = username;
         this.pasword = pasword;
@@ -33,7 +38,7 @@ public class Users {
 
     @ManyToOne
     @JoinColumn(name = "fk_roles")
-    private Roles role;
+    private Roles Role_;
 
     public int getUserid() {
         return userid;
@@ -60,12 +65,12 @@ public class Users {
         this.pasword = (pasword) ;
     }
 
-    public Roles getRole() {
-        return role;
+    public Roles getRole_() {
+        return Role_;
     }
 
-    public void setRole(Roles role) {
-        this.role = role;
+    public void setRole_(Roles Role_) {
+        this.Role_ = Role_;
     }
 
     

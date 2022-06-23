@@ -16,11 +16,16 @@ public class Roles {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int roleid;
-    private String rolename;
+    private String role;
 
-    public Roles(int roleid, String rolename) {
+    public Roles(){
+        super();
+    }
+
+    public Roles(int roleid, String role) {
+        super();
         this.roleid = roleid;
-        this.rolename = rolename;
+        this.role = role;
     }
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -34,12 +39,12 @@ public class Roles {
         this.roleid = roleid;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getRole() {
+        return role;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Users> getUsers() {

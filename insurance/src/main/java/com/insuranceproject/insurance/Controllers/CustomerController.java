@@ -29,9 +29,9 @@ public class CustomerController {
         return "Hello World";
     }
     
-    @GetMapping("/manager")
+    @GetMapping("/admin")
     public String hellomanager(){
-        return "Hello Manager";
+        return "Hello Admin";
     }
     
     @PostMapping("/addCustomer")
